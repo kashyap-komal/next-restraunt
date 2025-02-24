@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Restraunt() {
+function Restraunt(props) {
 
     const stylecard={
         backgroundColor: "#f0f0f0",
@@ -11,8 +11,10 @@ function Restraunt() {
         className='res-logo'
          alt="restrauntlogo" 
          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_264,h_324,c_fill/zvqgvwxrxsemvouvqvg3"/>
-        <h3>Pind Punjab</h3>
-      
+        <h3>{props.resName}</h3>
+        <h4> {props.cuisines}</h4>
+        <h5>Ratings 5 star</h5>
+        <h6>30 minutes</h6>
     </div>
   )
 }

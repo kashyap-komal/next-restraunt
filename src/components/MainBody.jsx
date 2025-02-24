@@ -9,7 +9,9 @@ function MainBody() {
         </div>
         <div className='res-container'>
             {/* different restraunts list */}
-           <Restraunt/> 
+            {/* here  I am assisnging the same Restraunt call just to see css how it aligns */}
+           <Restraunt resName="Pind Punjab" cuisines="Biryani, North Indian"/> 
+           <Restraunt  resName="KFC" cuisines="Burger, Chicken"/> 
 
         </div>
      
