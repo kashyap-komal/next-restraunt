@@ -443,10 +443,16 @@ function MainBody() {
         <div className='res-container'>
             {/* different restraunts list */}
             {/* here  I am assisnging the same Restraunt call just to see css how it aligns */}
-           <Restraunt resData={resObj[0]}/> 
+            {resObj.map((restraunts)=> (
+               <Restraunt key={restraunts.info.id} resData={restraunts}/>   
+              //  alway use unique id as key
+              ))}
+
+              {/* below is not good practice */}
+           {/* <Restraunt resData={resObj[0]}/> 
            <Restraunt resData={resObj[1]}/> 
            <Restraunt resData={resObj[2]}/> 
-           <Restraunt resData={resObj[3]}/> 
+           <Restraunt resData={resObj[3]}/>  */}
 
         </div>
      
