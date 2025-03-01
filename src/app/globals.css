@@ -54,10 +54,16 @@ a {
 
 .res-card{
   width: 200px;
-  height: 100%;
+  /* height: 100%; */
   margin: 5px;
   padding: 5px;
 }
+
+.res-card h4 {
+  word-wrap:break-word; /* Break words that are too long */
+  white-space: normal !important;
+}
+
 
 .res-card:hover{
   cursor: pointer;
