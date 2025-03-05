@@ -1,11 +1,13 @@
 'use client'
 import React,{useState,useEffect} from 'react'
 import Restraunt from './Restraunt'
-import resObj from '../utlis/mockData'
+import Shimmer from './Shimmer'
+//import resObj from '../utlis/mockData'
 
 function MainBody() {
-  const [filterres, setFilterres]=useState(resObj)
-
+  const [filterres, setFilterres]=useState([])
+  const[namefilterres,setNameFilterRes]=useState([])
+  const [searchText,setSearchText]=useState("")
 
   useEffect(()=>{
     fetchData();
@@ -19,11 +21,24 @@ function MainBody() {
 
     const josn=await data.json();
     console.log(josn);
+    setFilterres(josn?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setNameFilterRes(josn?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   }
   
-  return (
+  return filterres.length== 0 ? <Shimmer/> : (
     <div className='mainbody'>
         <div className='filter'>
+          <div className='search'>
+            <input type="text" className='search-box' value={searchText}onChange={(e)=>{
+              setSearchText(e.target.value)
+            }}/>
+            <button onClick={()=>{
+              //filter the restraunt cards and update the ui
+          const filterrestraunt=filterres.filter(
+            (res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+            setNameFilterRes(filterrestraunt);
+            }}>Search</button>
+          </div>
             <button 
             className='filter-btn'
             onClick={()=>{
@@ -36,7 +51,7 @@ function MainBody() {
         <div className='res-container'>
             {/* different restraunts list */}
             {/* here  I am assisnging the same Restraunt call just to see css how it aligns */}
-            {filterres.map((restraunts)=> (
+            {namefilterres.map((restraunts)=> (
                <Restraunt key={restraunts.info.id} resData={restraunts}/>   
               //  alway use unique id as key
               ))}

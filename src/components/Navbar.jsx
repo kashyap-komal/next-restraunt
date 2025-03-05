@@ -1,7 +1,9 @@
 'use client'
-import React from 'react'
+import React,{useState} from 'react'
 
 function Navbar() {
+  const[togglebtn,setToggleBtn]=useState("Login")
+  const btnName="Login"
   return (
     <div className='navbar'>
      <div className='logo-container'>
@@ -13,6 +15,13 @@ function Navbar() {
         <li>Contact us</li>
         <li>About us</li>
         <li>Cart</li>
+        <button
+         className='login-btn'
+         onClick={()=>{
+
+          togglebtn ==="Login" ?setToggleBtn("Logout"): setToggleBtn("Login")}}
+
+        >{togglebtn}</button>
       </ul>
 
      </div>
