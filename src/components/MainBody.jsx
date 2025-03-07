@@ -2,7 +2,6 @@
 import React,{useState,useEffect} from 'react'
 import Restraunt from './Restraunt'
 import Shimmer from './Shimmer'
-//import resObj from '../utlis/mockData'
 
 function MainBody() {
   const [filterres, setFilterres]=useState([])
