@@ -1,9 +1,15 @@
 'use client'
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react';
+import { useRouter } from 'next/navigation'
+import Link from 'next/link';
 
 function Navbar() {
+  const router= useRouter();
   const[togglebtn,setToggleBtn]=useState("Login")
-  const btnName="Login"
+
+  // const handleaboutnavig=()=>{
+  //   router.push('/about')
+  // }
   return (
     <div className='navbar'>
      <div className='logo-container'>
@@ -13,7 +19,10 @@ function Navbar() {
       <ul>
         <li>Home</li>
         <li>Contact us</li>
+        {/* <Link href="/about">
         <li>About us</li>
+        </Link> */}
+        <li onClick={()=>router.push('/about')}>About us</li>
         <li>Cart</li>
         <button
          className='login-btn'
