@@ -36,11 +36,18 @@ a {
 }
 
 .navbar{
+  position: sticky !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
-  padding: 10px ;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* border: 1px solid black; */
+  /* padding: 10px ; */
+  height: 80px;
 }
 .nav-items >ul{
   display: flex;
@@ -50,6 +57,7 @@ a {
 .nav-items > ul >li{
   padding: 10px;
   margin: 10px;
+  cursor: pointer;
 }
 
 .res-card{

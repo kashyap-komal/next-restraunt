@@ -26,7 +26,7 @@ footer
 export default function Home() {
   return (
     <div className="main-conatiner">
-      <Navbar/>
+      {/* <Navbar/> */}
       <MainBody />
     </div>
   );

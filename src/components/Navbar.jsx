@@ -7,9 +7,9 @@ function Navbar() {
   const router= useRouter();
   const[togglebtn,setToggleBtn]=useState("Login")
 
-  // const handleaboutnavig=()=>{
-  //   router.push('/about')
-  // }
+  const handleNavigation=(path)=>{
+    router.push(path);
+  }
   return (
     <div className='navbar'>
      <div className='logo-container'>
@@ -17,13 +17,17 @@ function Navbar() {
      </div>
      <div className='nav-items'>
       <ul>
-        <li>Home</li>
+      <li onClick={() => handleNavigation('/')}>Home</li>
+          <li onClick={() => handleNavigation('/contact')}>Contact us</li>
+          <li onClick={() => handleNavigation('/about')}>About us</li>  {/* ✅ Using useRouter */}
+          <li onClick={() => handleNavigation('/cart')}>Cart</li>
+        {/* <li>Home</li>
         <li>Contact us</li>
         {/* <Link href="/about">
         <li>About us</li>
-        </Link> */}
+        </Link> 
         <li onClick={()=>router.push('/about')}>About us</li>
-        <li>Cart</li>
+        <li>Cart</li> */}
         <button
          className='login-btn'
          onClick={()=>{
