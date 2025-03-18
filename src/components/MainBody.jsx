@@ -59,8 +59,7 @@ function MainBody() {
         {namefilterres.map((restaurant) => (
         <Link 
             key={restaurant.info.id} 
-            href="/restraunts"
-            // href={`/restraunt?id=${restaurant.info.id}`} 
+            href={`/restraunts/${restaurant.info.id}`} 
             className="cursor-pointer"
         >
             <Restraunt resData={restaurant} />

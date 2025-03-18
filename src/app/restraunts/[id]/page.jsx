@@ -2,12 +2,13 @@
 import Shimmer from '@/components/Shimmer';
 import React,{useEffect, useState} from 'react'
 import { useParams } from 'next/navigation'
+import {MENU_API} from "../../../utlis/constants";
 
 export default function Restrauntpage() {
   const [resInfo,setResInfo]=useState(null);
 
-  const params=useParams();
-  console.log(params,"parans")
+  const {id}=useParams();
+  console.log(id,"parans")
 
   useEffect(()=>{
     fetchMenu();
@@ -18,8 +19,7 @@ export default function Restrauntpage() {
     // const data=await fetch(
     //   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5865395&lng=73.6986675&restaurantId=649401&catalog_qa=undefined&submitAction=ENTER")
     // const jsondata=await data.json();
-    const data=await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5865395&lng=73.6986675&restaurantId=649401&catalog_qa=undefined&submitAction=ENTER")
+    const data=await fetch(MENU_API+id)
     const jsondata=await data.json();
     console.log(jsondata);
     setResInfo(jsondata.data)
