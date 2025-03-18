@@ -22,6 +22,47 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Learn More
 
+VVI: in Next.js App Router, you must include the square brackets [] in your folder name when defining a dynamic route.
+
+🔹 In VS Code Folder Structure
+You should literally create a folder named:
+
+✅ [id] (with square brackets)
+
+🗂️ Correct Folder Structure in VS Code
+lua
+Copy
+Edit
+/app
+ └── /restaurant
+     └── [id]          <-- Folder name must include square brackets
+         └── page.jsx   <-- The React component for the dynamic route
+❓ Why is this Required?
+Square brackets tell Next.js that this folder represents a dynamic route segment.
+Without the brackets, Next.js will treat the folder name as static.
+🚨 Incorrect Example (Will Not Work)
+bash
+Copy
+Edit
+/app
+ └── /restaurant
+     └── id            <-- ❌ Treated as a static route, NOT dynamic
+         └── page.jsx
+🔹 Accessing /restaurant/649401 would result in a 404 error.
+
+✅ Correct Example (Will Work)
+bash
+Copy
+Edit
+/app
+ └── /restaurant
+     └── [id]          <-- ✅ Dynamic route segment
+         └── page.jsx
+🔹 Accessing /restaurant/649401 will correctly render the page.jsx content.
+
+🧠 Key Rule:
+Square brackets are mandatory in the folder name for dynamic routes in the Next.js App Router. 😊
+
 To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.

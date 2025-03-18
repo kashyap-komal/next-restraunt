@@ -8,7 +8,9 @@ export default function Restrauntpage() {
   const [resInfo,setResInfo]=useState(null);
 
   const {id}=useParams();
-  console.log(id,"parans")
+//when we are trying to do dynakic route mean the pramas is kepp changing then in folder structure we have to make sure that [id] we use square bracket 
+
+
 
   useEffect(()=>{
     fetchMenu();
@@ -33,7 +35,6 @@ export default function Restrauntpage() {
   const Costfortwo= resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage;
 
    const {itemCards}=resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card
-   console.log(itemCards,"itemCards")
 
   
   return (
