@@ -1,32 +1,13 @@
 'use client'
 import Shimmer from '@/components/Shimmer';
-import React,{useEffect, useState} from 'react'
+import React from 'react'
 import { useParams } from 'next/navigation'
-import {MENU_API} from "../../../utlis/constants";
+import useRestrauntMenu from '@/utlis/useRestrauntMenu';
 
 export default function Restrauntpage() {
-  const [resInfo,setResInfo]=useState(null);
 
   const {id}=useParams();
-//when we are trying to do dynakic route mean the pramas is kepp changing then in folder structure we have to make sure that [id] we use square bracket 
-
-
-
-  useEffect(()=>{
-    fetchMenu();
-
-  },[])
-
-  const fetchMenu=async()=>{
-    // const data=await fetch(
-    //   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.5865395&lng=73.6986675&restaurantId=649401&catalog_qa=undefined&submitAction=ENTER")
-    // const jsondata=await data.json();
-    const data=await fetch(MENU_API+id)
-    const jsondata=await data.json();
-    console.log(jsondata);
-    setResInfo(jsondata.data)
-  }
-  console.log(resInfo,"resInfo")
+  const resInfo= useRestrauntMenu(id);
 
   if(resInfo===null)return <Shimmer/>
 
@@ -34,7 +15,7 @@ export default function Restrauntpage() {
   const cuisines=resInfo?.cards[2]?.card?.card?.info?.cuisines;
   const Costfortwo= resInfo?.cards[2]?.card?.card?.info?.costForTwoMessage;
 
-   const {itemCards}=resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card
+  const {itemCards}=resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[4]?.card?.card
 
   
   return (
