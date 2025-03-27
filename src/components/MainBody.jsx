@@ -5,6 +5,7 @@ import Shimmer from './Shimmer'
 import { useRouter } from 'next/navigation'; 
 import resList from '@/utlis/MockData';
 import Link from 'next/link';
+import useOnlineStatus from '@/utlis/useOnlineStatus';
 
 function MainBody() {
   const [filterres, setFilterres]=useState([])
@@ -31,6 +32,9 @@ function MainBody() {
     setFilterres(josn?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setNameFilterRes(josn?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   }
+
+  const onlineStatus= useOnlineStatus();
+  if (onlineStatus ===false)return <h1>Looks like you are offline!!! Please check you internet connection</h1>
    
   return filterres.length== 0 ? <Shimmer/> : (
     <div className='mainbody'>
