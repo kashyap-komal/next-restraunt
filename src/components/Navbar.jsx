@@ -15,9 +15,9 @@ function Navbar() {
     router.push(path);
   }
   return (
-    <div className='navbar'>
+    <div className='flex justify-between h-20 shadow-md'>
      <div className='logo-container'>
-      <img src="/restrauntlogo.png" width={70} height={70}/>
+      <img className='w-20' src="/restrauntlogo.png"/>
      </div>
      <div className='nav-items'>
       <ul>
