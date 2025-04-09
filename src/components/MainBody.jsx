@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import resList from '@/utlis/MockData';
 import Link from 'next/link';
 import useOnlineStatus from '@/utlis/useOnlineStatus';
+import Button from '@mui/material/Button';
+import SearchIcon from '@mui/icons-material/Search';
 
 function MainBody() {
   const [filterres, setFilterres]=useState([])
@@ -40,18 +42,18 @@ function MainBody() {
     <div className='mainbody'>
         <div className='filter'>
           <div className='search'>
-            <input type="text" className='search-box' value={searchText}onChange={(e)=>{
+            <input type="text" className='border border-gray-500 rounded-lg' value={searchText}onChange={(e)=>{
               setSearchText(e.target.value)
             }}/>
-            <button onClick={()=>{
+            <Button onClick={()=>{
               //filter the restraunt cards and update the ui
           const filterrestraunt=filterres.filter(
             (res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
             setNameFilterRes(filterrestraunt);
-            }}>Search</button>
+            }}><SearchIcon/></Button>
           </div>
             <button 
-            className='filter-btn'
+            className='text-gray-800'
             onClick={()=>{
               const filteredList= resObj.filter((res)=> res.info.avgRating>4);
               setFilterres(filteredList);
@@ -59,7 +61,7 @@ function MainBody() {
             >
               Top Rated Restraunts</button>
         </div>
-        <div className='res-container'>
+        <div className='flex flex-wrap'>
         {namefilterres.map((restaurant) => (
         <Link 
             key={restaurant.info.id} 
